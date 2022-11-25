@@ -6,7 +6,9 @@ function NavBar() {
     return ( 
         <ul>
             <li><Link to='/'>Home</Link></li>
-            {/* <li><Link to='/reviewed'>Reviewed Gallery</Link></li> */}
+            <li><Link to='/Login'>Login</Link></li>
+            <li><Link to='/Register'>Register</Link></li>
+
         </ul>
     )
 }
