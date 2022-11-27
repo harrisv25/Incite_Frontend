@@ -7,6 +7,10 @@ const Register = () => {
     const [username, usernameChange] = useState("")
     const [email, emailChange] = useState("")
     const [password, passwordChange] = useState("")
+    const [message, messageChange] = useState("Please enter your account information")
+    const [messageID, messageIDChange] = useState("register_intro")
+
+
     
     const handle_username_Change = (e) => {
         usernameChange(e.target.value)
@@ -37,11 +41,27 @@ const Register = () => {
             }
             throw new Error(res)
         })
+        .then((data) => {
+            if(data === 1){
+                navigate('/Login')
+            }
+            else if (data === 0) {
+                messageIDChange('register_error')
+                messageChange('Username not available. Please select a new one.')
+                navigate('/Register')
+            }
+            else {
+                messageIDChange('register_error')
+                messageChange('Email already in use. Please select a new one.')
+                navigate('/Register')
+            }
+        })
         .catch((err) => {console.log(err)});
         // navigate('/')
     }
     return (
         <div>
+            <h3 id={messageID}>{message}</h3><br/>
             <form onSubmit={(e) => { handleSubmit(e) }}  id="Login">
                 <input type='text' id="username" name="username" placeholder="Username" onChange={handle_username_Change} required/><br/><br/>
                 <input type='text' id="email" name="email" placeholder="Email" onChange={handle_email_Change} required/><br/><br/>

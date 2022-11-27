@@ -1,16 +1,12 @@
 import * as React from 'react'
-import { useParams} from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 
 
 const Profile = () => {
     const [user, setUser] = useState({});
     const { user_id } = useParams()
-
-    // console.log(user_id)
-  
     useEffect(() => {
-        // fetch request
         fetch(`${process.env.REACT_APP_BACKEND_URL}/Profile/${user_id}`, {
             method: 'GET',
             // body: JSON.stringify({
@@ -21,22 +17,25 @@ const Profile = () => {
             }
         })
         .then((response) => {
-            // console.log(response);
             return response.json();
         })
         .then((data) => {
             console.log(data)
-            // setLoading(false);
             setUser(data);
         })
         }, [user_id])
-
-    // console.log(user)
-  
     return (
       <div>
         <h1>{user['username']}</h1>
-      </div>
+        <div id="user_nav">
+            <Link to={`/AddQuestion/${user_id}`}>
+                <h4>Ask a Question</h4>
+            </Link>
+            <Link to={`/ViewQuestion/${user_id}`}>
+                <h4>Answer Questions</h4>
+            </Link>
+        </div>
+    </div>
     )
   }
 

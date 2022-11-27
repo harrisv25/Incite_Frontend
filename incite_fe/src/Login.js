@@ -6,6 +6,8 @@ const Login = () => {
     const navigate = useNavigate("/")
     const [username, usernameChange] = useState("")
     const [password, passwordChange] = useState("")
+    const [message, messageChange] = useState("Please enter login information")
+
     
     const handle_username_Change = (e) => {
         usernameChange(e.target.value)
@@ -35,19 +37,19 @@ const Login = () => {
         .then((data) => {
             // console.log(data)
             if(data === -99999){
+                messageChange("Login incorrect. Please Try Again")
                 navigate('/Login')
             }
             else {
                 navigate('/Profile/'+data)
             }
-            // setLoading(false);
-            // setApiData(data);
         })
         .catch((err) => {console.log(err)});
         // navigate('/')
     }
     return (
         <div>
+            <h3>{message}</h3>
             <form onSubmit={(e) => { handleSubmit(e) }}  id="Login">
                 <input type='text' id="username" name="username" placeholder="Username" onChange={handle_username_Change} required/><br/><br/>
                 <input type='text' id="password" name="password" placeholder="Password" onChange={handle_password_Change} required/><br/><br/>

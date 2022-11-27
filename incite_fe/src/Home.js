@@ -22,18 +22,17 @@ const Home = () => {
         };
         getAPI();
     }, []);
-    // console.log(apiData[0])
     return (
         <section>
-            {Object.keys(apiData).map((test) => {
-                const testID = apiData[test].id;
-                const tname = apiData[test].tname;
-                const desc = apiData[test].desc;
+            {Object.keys(apiData).map((question) => {
+                const questionID = apiData[question].id;
+                const prompt = apiData[question].prompt;
                 return (
-                    <div className="test-container" key={String(testID)}>
-                        <h1>{tname}</h1>
-                        <p>{desc}</p>
-                    </div>
+                    <li key={String(questionID)}>
+                    <Link to={`/AnswerQuestion/${String(questionID)}`} state={{ question }}>
+                        <h4>{prompt}</h4>
+                    </Link>
+                  </li>
                 )
             })}
         </section>

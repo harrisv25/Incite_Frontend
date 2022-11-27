@@ -9,6 +9,8 @@ import Home from './Home'
 import Login from './Login'
 import Register from './Register'
 import Profile from './Profile'
+import AddQuestion from './AddQuestion'
+import ViewQuestion from './ViewQuestion'
 // import ReviewedGallery from './Reviewed'
 // import ReviewedGame from './ReviewedGame'
 
@@ -31,13 +33,12 @@ function App() {
         <NavBar />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path='/AddTest' element={<AddTest />} />
+          {/* <Route path='/AddTest' element={<AddTest />} /> */}
           <Route path='/Login' element={<Login />} />
           <Route path='/Register' element={<Register />} />
           <Route path='/Profile/:user_id' element={<Profile />} />
-
-          {/* <Route path='/reviewed' element={<ReviewedGallery />} />
-          <Route path='/reviewed/:id' element={<ReviewedGame />} /> */}
+          <Route path='/AddQuestion/:user_id' element={<AddQuestion />} />
+          <Route path='/ViewQuestion/:user_id' element={<ViewQuestion />} />
         </Routes>
         {/* < AddTest /> */}
       </div>
