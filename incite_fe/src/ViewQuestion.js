@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 
 
@@ -29,7 +29,7 @@ const ViewQuestion = () => {
             return response.json();
         })
         .then((data) => {
-            console.log(data)
+            // console.log(data)
             getQuestion(data);
         })
         }, [user_id])
@@ -54,12 +54,22 @@ const ViewQuestion = () => {
             }
             throw new Error(res)
         })
+        .then((data) => {
+            console.log(data)
+            // setUser(data);
+        })
         .catch((err) => {console.log(err)});
-        navigate(`/ViewQuestion/${user_id}`)
+        // navigate(`/ViewQuestion/${user_id}`)
+        window.location.reload();
     }
 
     return (
       <div>
+        <div id="user_nav">
+            <Link to={`/Profile/${user_id}`}>
+                <h4>Dashboard</h4>
+            </Link>
+        </div>
         <h2>{question['prompt']}</h2>
         <form onSubmit={handleSubmit} className="question" autoComplete='off' id="answerQuestion">
             <div className='form-field'>

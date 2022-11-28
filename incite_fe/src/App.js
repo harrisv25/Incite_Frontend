@@ -11,6 +11,7 @@ import Register from './Register'
 import Profile from './Profile'
 import AddQuestion from './AddQuestion'
 import ViewQuestion from './ViewQuestion'
+import Delete from './Delete'
 // import ReviewedGallery from './Reviewed'
 // import ReviewedGame from './ReviewedGame'
 
@@ -30,7 +31,7 @@ function App() {
   return (
     <div className="App">
       <div id="root">
-        <NavBar />
+        {/* <NavBar /> */}
         <Routes>
           <Route exact path="/" element={<Home />} />
           {/* <Route path='/AddTest' element={<AddTest />} /> */}
@@ -39,6 +40,8 @@ function App() {
           <Route path='/Profile/:user_id' element={<Profile />} />
           <Route path='/AddQuestion/:user_id' element={<AddQuestion />} />
           <Route path='/ViewQuestion/:user_id' element={<ViewQuestion />} />
+          <Route path='/Delete/:user_id' element={<Delete />} />
+
         </Routes>
         {/* < AddTest /> */}
       </div>
