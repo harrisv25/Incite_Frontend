@@ -2,6 +2,8 @@ import React from 'react'
 import { useParams} from 'react-router-dom'
 import {Link, Routes, ROute, useNavigate } from 'react-router-dom'
 import { useState } from 'react';
+import NavBar from './NavBar';
+
 
 const Delete = () => {
     const navigate = useNavigate()
@@ -25,10 +27,13 @@ const Delete = () => {
     }
     return (
         <div>
+        <NavBar />
+        <div>
             <h2>
                 Are you sure you want to delete your account?
             </h2>
-            <button onClick={handleClick}>Delete</button>
+            <button onClick={handleClick} id="dlt-btn">Delete</button>
+        </div>
         </div>
     )
 }

@@ -35,20 +35,25 @@ const Home = () => {
         getAPI();
     }, []);
     return (
-        <section>
+        <section id="home-page">
             <div id="userlogin">
-                {comp}
-                <button onClick={(handleLogin)}>Login</button>
-                <button onClick={(handleRegister)}>Register</button>
-                {/* <div>
-                    <Link to={`/Login`}>
-                        <h4>Login</h4>
-                    </Link>
-                    <Link to={`/Register`}>
-                        <h4>Register</h4>
-                    </Link>
-                </div> */}
+                <div id="nav-items">
+                    {comp}
+                    <br/>
+                    <button onClick={(handleLogin)} id="tempnav">Login</button>
+                    <button onClick={(handleRegister)}id="tempnav">Register</button>
+                </div>
             </div>
+            <div id="Welcome-Greeting">
+                <p>
+                    Welcome to Incite, a place of community engagemnt and self-learning.<br/>
+                    Here we seek to understand ourselves as an individual in society. <br/>
+                    Ask questions to the community and answer some in return, compare <br/>
+                    you're results and see how your perspective stacks up against the <br/>
+                    rest of the community. 
+                </p>
+            </div>
+
         </section>
     )
 }

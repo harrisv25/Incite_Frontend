@@ -1,18 +1,18 @@
 import * as React from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react';
+import NavBar from './NavBar';
+
 
 
 const ViewQuestion = () => {
     const navigate = useNavigate("/")
     const [question, getQuestion] = useState({});
-    // const { question_id } = useParams()
     const [userAnswer, setAnswer] = useState('')
     const { user_id } = useParams()
 
 
     const onValueChange = (event, index) => {
-        // console.log(index)
         setAnswer({
             index
         });
@@ -29,11 +29,9 @@ const ViewQuestion = () => {
             return response.json();
         })
         .then((data) => {
-            // console.log(data)
             getQuestion(data);
         })
         }, [user_id])
-    // console.log(question.id)
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -56,20 +54,17 @@ const ViewQuestion = () => {
         })
         .then((data) => {
             console.log(data)
-            // setUser(data);
         })
         .catch((err) => {console.log(err)});
-        // navigate(`/ViewQuestion/${user_id}`)
         window.location.reload();
     }
 
     return (
-      <div>
-        <div id="user_nav">
-            <Link to={`/Profile/${user_id}`}>
-                <h4>Dashboard</h4>
-            </Link>
+      <div >
+        <div id="nav-section">
+            <NavBar />
         </div>
+        <div id="Answer-page">
         <h2>{question['prompt']}</h2>
         <form onSubmit={handleSubmit} className="question" autoComplete='off' id="answerQuestion">
             <div className='form-field'>
@@ -78,7 +73,7 @@ const ViewQuestion = () => {
                     <div key={index} className="option">
                         <input name="answer" 
                         type="radio" 
-                        id="answer" 
+                        id="option" 
                         required 
                         value={option}
                         onChange={(e) => onValueChange(e, index)}/>
@@ -86,8 +81,10 @@ const ViewQuestion = () => {
                     </div>
                 ))}
             </div>
+            <br/>
             <input type="Submit" value="Submit Answer" readOnly />
         </form>
+      </div>
       </div>
     )
   }

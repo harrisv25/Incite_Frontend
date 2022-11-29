@@ -35,7 +35,6 @@ const Login = () => {
             throw new Error(res)
         })
         .then((data) => {
-            // console.log(data)
             if(data === -99999){
                 messageChange("Login incorrect. Please Try Again")
                 navigate('/Login')
@@ -45,16 +44,17 @@ const Login = () => {
             }
         })
         .catch((err) => {console.log(err)});
-        // navigate('/')
     }
     return (
-        <div>
+        <div id="login-page">
             <h3>{message}</h3>
-            <form onSubmit={(e) => { handleSubmit(e) }}  id="Login">
-                <input type='text' id="username" name="username" placeholder="Username" onChange={handle_username_Change} required/><br/><br/>
-                <input type='text' id="password" name="password" placeholder="Password" onChange={handle_password_Change} required/><br/><br/>
-                <input type="Submit" value="Login" readOnly />
-            </form>
+            <div>
+                <form onSubmit={(e) => { handleSubmit(e) }}  id="Login">
+                    <input type='text' id="username" name="username" placeholder="Username" onChange={handle_username_Change} required/><br/><br/>
+                    <input type='text' id="password" name="password" placeholder="Password" onChange={handle_password_Change} required/><br/><br/>
+                    <input type="Submit" value="Login" readOnly />
+                </form>
+            </div>
         </div>
     )
 }
